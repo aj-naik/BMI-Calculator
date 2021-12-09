@@ -12,6 +12,8 @@ const kBottomContainerColor = Color(0xffeb1555);
 
 const kOverlayColour = Color(0x29eb1555);
 
+const kButtonColour = Color(0xff4c4f5e);
+
 const kCardTextStyle = TextStyle(
   fontSize: 18.0,
   color: cardTextColor,
