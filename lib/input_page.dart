@@ -18,7 +18,6 @@ class _InputPageState extends State<InputPage> {
   Gender selectedGender;
   int height = 180;
   int weight = 20;
-  int age = 8;
 
   // Method to select card without turnery operators
 
@@ -125,10 +124,10 @@ class _InputPageState extends State<InputPage> {
                         inactiveTrackColor: cardTextColor,
                         overlayColor: kOverlayColour,
                         thumbShape: RoundSliderThumbShape(
-                          enabledThumbRadius: 13.0,
+                          enabledThumbRadius: 15.0,
                         ),
                         overlayShape:
-                            RoundSliderOverlayShape(overlayRadius: 26.0)),
+                            RoundSliderOverlayShape(overlayRadius: 30.0)),
                     child: Slider(
                       value: height.toDouble(),
                       min: 120.0,
@@ -166,7 +165,7 @@ class _InputPageState extends State<InputPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             RoundIconButton(
-                              icon: Icons.remove,
+                              icon: FontAwesomeIcons.minus,
                               onPressed: () {
                                 setState(() {
                                   weight--;
@@ -177,7 +176,7 @@ class _InputPageState extends State<InputPage> {
                               width: 10,
                             ),
                             RoundIconButton(
-                              icon: Icons.add,
+                              icon: FontAwesomeIcons.plus,
                               onPressed: () {
                                 setState(() {
                                   weight++;
@@ -199,34 +198,6 @@ class _InputPageState extends State<InputPage> {
                         Text(
                           'AGE',
                           style: kCardTextStyle,
-                        ),
-                        Text(
-                          age.toString(),
-                          style: kNumberTextStyle,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RoundIconButton(
-                              icon: Icons.remove,
-                              onPressed: () {
-                                setState(() {
-                                  age--;
-                                });
-                              },
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            RoundIconButton(
-                              icon: Icons.add,
-                              onPressed: () {
-                                setState(() {
-                                  age++;
-                                });
-                              },
-                            ),
-                          ],
                         )
                       ],
                     ),
@@ -260,8 +231,8 @@ class RoundIconButton extends StatelessWidget {
       onPressed: onPressed,
       elevation: 6.0,
       constraints: BoxConstraints.tightFor(
-        width: 47.0,
-        height: 47.0,
+        width: 56.0,
+        height: 56.0,
       ),
       shape: CircleBorder(),
       fillColor: kButtonColour,
