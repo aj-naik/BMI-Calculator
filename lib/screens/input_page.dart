@@ -1,10 +1,12 @@
-import 'package:bmi_calculator/results_page.dart';
+import './results_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'resuableCard.dart';
-import 'cardContentWidget.dart';
-import 'roundIconButton.dart';
-import 'constants.dart';
+import '../components/resuableCard.dart';
+import '../components/cardContentWidget.dart';
+import '../components/roundIconButton.dart';
+import '../components/bottomButton.dart';
+import '../constants.dart';
+import 'calculator_brain.dart';
 
 enum Gender {
   male,
@@ -19,8 +21,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
   int height = 180;
-  int weight = 20;
-  int age = 8;
+  int weight = 50;
+  int age = 10;
 
   // Method to select card without turnery operators
 
@@ -157,7 +159,7 @@ class _InputPageState extends State<InputPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          'WEIGHT',
+                          'WEIGHT (KG)',
                           style: kCardTextStyle,
                         ),
                         Text(
@@ -199,7 +201,7 @@ class _InputPageState extends State<InputPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          'AGE',
+                          'AGE (YEARS)',
                           style: kCardTextStyle,
                         ),
                         Text(
@@ -237,23 +239,17 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
+          BottomButton(
+            buttonTitle: 'CALCULATE',
             onTap: () {
-              Navigator.pushNamed(context, '/results');
+              CalculatorBrain calc =
+                  CalculatorBrain(height: height, weight: weight);
+              Navigator.pushNamed(context, '/results', arguments: {
+                'bmiResult': calc.calculateBMI(),
+                'resultText': calc.getResult(),
+                'interpretation': calc.getInterpretation(),
+              });
             },
-            child: Container(
-              child: Center(
-                child: Text(
-                  'CALCULATE',
-                  style: kLargeButtonTextStyle,
-                ),
-              ),
-              color: kBottomContainerColor,
-              margin: EdgeInsets.only(top: 10),
-              // padding: EdgeInsets.only(bottom: 5.0),
-              width: double.infinity,
-              height: kBottomContainerHeight,
-            ),
           ),
         ],
       ),
