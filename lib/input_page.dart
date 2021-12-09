@@ -2,14 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'resuableCard.dart';
 import 'cardContentWidget.dart';
-
-const bottomContainerHeight = 65.0;
-
-const activeCardColour = Color(0xff1d1e33);
-
-const inactiveCardColour = Color(0xff111328);
-
-const bottomContainerColor = Color(0xffeb1555);
+import 'constants.dart';
 
 enum Gender {
   male,
@@ -23,6 +16,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
+  int height = 180;
 
   // Method to select card without turnery operators
 
@@ -58,43 +52,40 @@ class _InputPageState extends State<InputPage> {
         centerTitle: true,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
             child: Row(
               children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReusableCard(
+                    onPress: () {
                       setState(() {
                         selectedGender = Gender.male;
                       });
                     },
-                    child: ReusableCard(
-                      colour: selectedGender == Gender.male
-                          ? activeCardColour
-                          : inactiveCardColour,
-                      cardChild: CardContentWidget(
-                        cardIcon: FontAwesomeIcons.mars,
-                        cardText: 'MALE',
-                      ),
+                    colour: selectedGender == Gender.male
+                        ? kActiveCardColour
+                        : kInactiveCardColour,
+                    cardChild: CardContentWidget(
+                      cardIcon: FontAwesomeIcons.mars,
+                      cardText: 'MALE',
                     ),
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReusableCard(
+                    onPress: () {
                       setState(() {
                         selectedGender = Gender.female;
                       });
                     },
-                    child: ReusableCard(
-                      colour: selectedGender == Gender.female
-                          ? activeCardColour
-                          : inactiveCardColour,
-                      cardChild: CardContentWidget(
-                        cardIcon: FontAwesomeIcons.venus,
-                        cardText: 'FEMALE',
-                      ),
+                    colour: selectedGender == Gender.female
+                        ? kActiveCardColour
+                        : kInactiveCardColour,
+                    cardChild: CardContentWidget(
+                      cardIcon: FontAwesomeIcons.venus,
+                      cardText: 'FEMALE',
                     ),
                   ),
                 ),
@@ -103,7 +94,53 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ReusableCard(
-              colour: activeCardColour,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'HEIGHT',
+                    style: kCardTextStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: <Widget>[
+                      Text(
+                        height.toString(),
+                        style: kNumberTextStyle,
+                      ),
+                      Text(
+                        'cm',
+                        style: kCardTextStyle,
+                      )
+                    ],
+                  ),
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                        thumbColor: kBottomContainerColor,
+                        activeTrackColor: Colors.white,
+                        inactiveTrackColor: cardTextColor,
+                        overlayColor: kOverlayColour,
+                        thumbShape: RoundSliderThumbShape(
+                          enabledThumbRadius: 15.0,
+                        ),
+                        overlayShape:
+                            RoundSliderOverlayShape(overlayRadius: 30.0)),
+                    child: Slider(
+                      value: height.toDouble(),
+                      min: 120.0,
+                      max: 240.0,
+                      onChanged: (double newValue) {
+                        setState(() {
+                          height = newValue.round();
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              colour: kActiveCardColour,
             ),
           ),
           Expanded(
@@ -111,22 +148,22 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: ReusableCard(
-                    colour: activeCardColour,
+                    colour: kActiveCardColour,
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    colour: activeCardColour,
+                    colour: kActiveCardColour,
                   ),
                 ),
               ],
             ),
           ),
           Container(
-            color: bottomContainerColor,
+            color: kBottomContainerColor,
             margin: EdgeInsets.only(top: 10),
             width: double.infinity,
-            height: bottomContainerHeight,
+            height: kBottomContainerHeight,
           ),
         ],
       ),
