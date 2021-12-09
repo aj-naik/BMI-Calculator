@@ -135,8 +135,8 @@ class _InputPageState extends State<InputPage> {
                             RoundSliderOverlayShape(overlayRadius: 26.0)),
                     child: Slider(
                       value: height.toDouble(),
-                      min: 120.0,
-                      max: 240.0,
+                      min: 50.0,
+                      max: 250.0,
                       onChanged: (double newValue) {
                         setState(() {
                           height = newValue.round();

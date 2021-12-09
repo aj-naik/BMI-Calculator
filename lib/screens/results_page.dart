@@ -29,13 +29,13 @@ class ResultsPage extends StatelessWidget {
           col = Colors.red[900];
           break;
         case "Severely Obese":
-          col = Colors.red[700];
+          col = Colors.redAccent[700];
           break;
         case "Obese":
           col = Colors.red[400];
           break;
         case "Overweight":
-          col = Colors.orange[300];
+          col = Colors.orange;
           break;
         case "Normal":
           col = Color(0xFF24D876);
@@ -44,10 +44,10 @@ class ResultsPage extends StatelessWidget {
           col = Colors.orange[300];
           break;
         case "Severely Underweight":
-          col = Colors.red[400];
+          col = Colors.amber;
           break;
         case "Very Severely Underweight":
-          col = Colors.red[700];
+          col = Colors.amberAccent[700];
           break;
       }
       return col;

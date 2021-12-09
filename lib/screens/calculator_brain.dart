@@ -35,11 +35,11 @@ class CalculatorBrain {
 
   String getInterpretation() {
     if (_bmi > 40) {
-      return 'You are Very Serverly Obese. Contact your doctor for medical opinion and suggestions to bring BMI to healthy';
+      return 'You are very serverly obese. Contact your doctor for medical opinion and suggestions to bring BMI to healthy';
     } else if (_bmi > 34.9 && _bmi <= 40) {
-      return 'You are Severely Obsese. You need a lot of Diet changes and strong exercise routine.';
+      return 'You are severely bbsese. You need a lot of diet changes and strong exercise routine.';
     } else if (_bmi >= 30.0 && _bmi <= 34.9) {
-      return 'You are Obese. Try diet changes and exercising a lot to get BMI to Normal';
+      return 'You are Obese. Try diet changes and exercising a lot to get BMI to normal';
     } else if (_bmi > 25.0 && _bmi <= 29.9) {
       return 'You have a higher than normal body weight. Try to exercise more.';
     } else if (_bmi > 18.5 && _bmi <= 25.0) {
@@ -47,9 +47,9 @@ class CalculatorBrain {
     } else if (_bmi > 16.0 && _bmi <= 18.5) {
       return 'You have a lower than normal body weight. You can eat a bit more.';
     } else if (_bmi >= 15.0 && _bmi <= 16.0) {
-      return 'You are Severely Underweight. You need to eat and exercise more to get into healthy range';
+      return 'You are severely underweight. You need to eat and exercise more to get into healthy range';
     } else {
-      return 'Very Severely Underweight. Contact your doctor for medical opinion and suggestions to bring BMI to healthy';
+      return 'You are very severely underweight. Contact your doctor for medical opinion and help bringing BMI to healthy';
     }
   }
 }
