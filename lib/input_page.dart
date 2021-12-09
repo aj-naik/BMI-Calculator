@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'resuableCard.dart';
 import 'cardContentWidget.dart';
+import 'roundIconButton.dart';
 import 'constants.dart';
 
 enum Gender {
@@ -243,28 +244,6 @@ class _InputPageState extends State<InputPage> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  RoundIconButton({@required this.icon, @required this.onPressed});
-
-  final IconData icon;
-  final Function onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(icon),
-      onPressed: onPressed,
-      elevation: 6.0,
-      constraints: BoxConstraints.tightFor(
-        width: 47.0,
-        height: 47.0,
-      ),
-      shape: CircleBorder(),
-      fillColor: kButtonColour,
     );
   }
 }
