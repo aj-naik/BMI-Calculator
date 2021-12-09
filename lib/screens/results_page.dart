@@ -22,13 +22,35 @@ class ResultsPage extends StatelessWidget {
     String interpretations = arg['interpretation'];
 
     Color resultColor() {
-      if (resultTexts.toLowerCase() == "normal") {
-        return Color(0xff24d876);
-      } else if (resultTexts.toLowerCase() == "underweight") {
-        return Colors.orange[300];
-      } else {
-        return Colors.red[800];
+      String res = resultTexts;
+      Color col;
+      switch (res) {
+        case "Very Serverly Obese":
+          col = Colors.red[900];
+          break;
+        case "Severely Obese":
+          col = Colors.red[700];
+          break;
+        case "Obese":
+          col = Colors.red[400];
+          break;
+        case "Overweight":
+          col = Colors.orange[300];
+          break;
+        case "Normal":
+          col = Color(0xFF24D876);
+          break;
+        case "Underweight":
+          col = Colors.orange[300];
+          break;
+        case "Severely Underweight":
+          col = Colors.red[400];
+          break;
+        case "Very Severely Underweight":
+          col = Colors.red[700];
+          break;
       }
+      return col;
     }
 
     return Scaffold(
